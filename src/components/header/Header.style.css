@@ -1,0 +1,41 @@
+.App-header {
+  background-color: #282c34;
+  background-image: url("/public/assets/Poster.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 60vh;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+  /* display: flex; */
+}
+.con-header {
+  width: 40%;
+  padding: 6rem 3rem;
+  display: grid;
+  gap: 0.5rem;
+}
+.movie-title-header {
+  font-size: 3rem;
+}
+
+.movie-description {
+  font-size: 0.8rem;
+}
+@media screen and (max-width: 600px) {
+  .con-header {
+    width: 75%;
+    padding-top: 10rem;
+  }
+}
+.trailerButton {
+  background-color: #be123c;
+  text-transform: uppercase;
+  outline: none;
+  font-size: 1.2rem;
+  color: #f9f9f9;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 8px;
+  width: fit-content;
+}

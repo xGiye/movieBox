@@ -1,0 +1,13 @@
+footer {
+  text-align: center;
+  padding-bottom: 6rem;
+}
+.info {
+  display: flex;
+  font-family: 800;
+  justify-content: space-between;
+}
+.con-footer {
+  max-width: 28rem;
+  margin: 0 auto;
+}

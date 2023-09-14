@@ -1,0 +1,58 @@
+nav {
+  min-width: 100vw;
+  min-height: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 5rem;
+}
+
+.movies-category {
+  border: 1px solid #000;
+  padding: 0.5rem;
+}
+
+.header-bar {
+  padding: 0.25rem;
+  display: flex;
+  justify-content: space-around;
+  gap: 0.5rem;
+  width: 100%;
+  top: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.searchBox {
+  border: 2.5px solid #d1d5db;
+  border-radius: 8px;
+  width: 50%;
+  background-color: transparent;
+  outline: none;
+  color: #d1d5db;
+  padding: 0.15rem;
+}
+
+@media screen and (max-width: 800px) {
+  .searchBox {
+    width: 50%;
+  }
+
+  .header-bar {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.fetchInfo {
+}

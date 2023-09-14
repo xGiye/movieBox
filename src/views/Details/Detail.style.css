@@ -1,0 +1,45 @@
+.backdrop {
+  height: 65vh;
+  width: 100%;
+}
+.detailNav {
+  position: fixed;
+  top: 0;
+  background-color: rgb(0, 0, 0, 0.7);
+  color: #f9f9f9;
+  padding: 0.5rem 2rem;
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.backToHome {
+  color: #f9f9f9;
+  text-decoration: none;
+  border: 2px solid #f9f9f9;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+.details {
+  padding: 1rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.pageDetails {
+  position: relative;
+}
+span {
+  padding: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #3d3d3d;
+}
+.fetchMessage {
+  margin-top: 10rem;
+  padding: 5rem;
+  background-color: rgb(0, 0, 0, 0.6);
+  color: #f9f9f9;
+  margin-bottom: 8rem;
+}
