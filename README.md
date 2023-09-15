@@ -1,5 +1,7 @@
 # MovieBox App
 
+[Live Page](https://moviebox-g9kl.onrender.com)
+
 MovieBox is a web application that allows you to explore a vast collection of movies and TV shows from The Movie Database (TMDb). With MovieBox, you can search for your favorite movies, discover new releases, and access detailed information about each film.
 
 ## Getting Started
