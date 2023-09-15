@@ -10,7 +10,7 @@ const Details = () => {
     dataList: movie,
     err,
     isPending,
-  } = useFetch(`https://api.themoviedb.org/3/movie/${id}`);
+  } = useFetch(`https://api.themoviedb.org/3/movie/${id}?`);
   const {
     budget,
     title,
@@ -35,7 +35,7 @@ const Details = () => {
       </div>
       {err && <div className="fetchMessage">{err}</div>}
       {isPending && <div className="fetchMessage">loading...</div>}
-      {movie.length !== 0 && (
+      {movie && (
         <div className="detailsContainer">
           <img src={img} alt="movie-banner" className="backdrop" />
           <div className="details">

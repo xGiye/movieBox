@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Logo from "../../assets/Logo.svg";
 import useFetch from "../../hooks/useFetch";
 import DataList from "../../components/dataList/DataList.component";
@@ -12,27 +12,25 @@ const Home = () => {
     dataList: moviesList,
     err,
     isPending,
-  } = useFetch("https://api.themoviedb.org/3/movie/top_rated");
-  const [searchstring, setSearchString] = useState("");
-  const [filteredArray, setFilteredarray] = useState([]);
+  } = useFetch("https://api.themoviedb.org/3/movie/top_rated?");
 
-  //show filtered Arrays from SearchBox and also determine when to show just Top 10
-  useEffect(() => {
-    const newFilteredArray = moviesList.filter((movies) => {
-      return movies.title.toLocaleLowerCase().includes(searchstring);
-    });
-    if (searchstring.length < 1) {
-      setFilteredarray(moviesList.slice(0, 10));
-    } else {
-      setFilteredarray(newFilteredArray);
-    }
-  }, [searchstring, moviesList]);
+  const [searchstring, setSearchString] = useState("");
+  // const [filteredArray, setFilteredarray] = useState([]);
+
+  const {
+    dataList: searchList,
+    err: errSearch,
+    isPending: isPendingSearch,
+  } = useFetch(
+    `https://api.themoviedb.org/3/search/movie?query=${searchstring}&`
+  );
 
   //Search Handler
   const searchEventHandler = (e) => {
     const stringValue = e.target.value.toLocaleLowerCase();
     setSearchString(stringValue);
   };
+
   return (
     <div className="App">
       <div className="header-bar">
@@ -49,16 +47,27 @@ const Home = () => {
       <div className="container">
         <h3 className="movies-category">Featured Movies</h3>
 
-        {err && <div className="fetchInfo">{err}</div>}
-        {isPending && <div className="fetchInfo">loading...</div>}
-        {filteredArray && <DataList dataList={filteredArray} />}
-        {moviesList.length > 0 &&
-          filteredArray.length < 1 &&
-          searchstring.length > 0 && (
-            <div className="fetchInfo">
-              <h1>No movie title with:{searchstring}</h1>
-            </div>
-          )}
+        {searchstring.length === 0 && err && (
+          <div className="fetchInfo">{err}</div>
+        )}
+        {searchstring.length === 0 && isPending && (
+          <div className="fetchInfo">loading...</div>
+        )}
+        {searchstring.length === 0 && <DataList dataList={moviesList} />}
+        {searchstring.length > 0 && isPendingSearch && (
+          <div className="fetchInfo">Loading</div>
+        )}
+        {searchstring.length > 0 && errSearch && (
+          <div className="fetchInfo">{errSearch}</div>
+        )}
+        {searchstring.length > 0 && !errSearch && !isPendingSearch && (
+          <DataList dataList={searchList} />
+        )}
+
+        {searchstring.length > 0 &&
+          !errSearch &&
+          searchList.length === 0 &&
+          !isPendingSearch && <div>No movie with title : {searchstring}</div>}
       </div>
       <Footer />
     </div>

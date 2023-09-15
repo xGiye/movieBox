@@ -6,24 +6,25 @@ const useFetch = (url) => {
   const [err, setErr] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const apiKey = process.env.REACT_APP_API_KEY;
-        const response = await fetch(`${url}?api_key=${apiKey}`);
-
+    const apiKey = process.env.REACT_APP_API_KEY;
+    fetch(`${url}api_key=${apiKey}`)
+      .then((response) => {
         if (response.ok) {
-          const data = await response.json();
-          setDataList(data.results || data);
-          setPending(false);
+          return response.json();
         } else {
-          throw Error("Could not fetch the data for the resource");
+          throw Error("Network response was not ok");
         }
-      } catch (error) {
+      })
+      .then((data) => {
+        console.log(data);
+        setDataList(data.results || data);
+        setPending(false);
+      })
+      .catch((error) => {
         setErr(error.message);
         setPending(false);
-      }
-    };
-    fetchData();
+        console.log(error);
+      });
   }, [url]);
 
   return { dataList, err, isPending };
