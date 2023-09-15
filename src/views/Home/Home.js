@@ -53,7 +53,9 @@ const Home = () => {
         {searchstring.length === 0 && isPending && (
           <div className="fetchInfo">loading...</div>
         )}
-        {searchstring.length === 0 && <DataList dataList={moviesList} />}
+        {searchstring.length === 0 && (
+          <DataList dataList={moviesList.slice(0, 10)} />
+        )}
         {searchstring.length > 0 && isPendingSearch && (
           <div className="fetchInfo">Loading</div>
         )}
@@ -63,6 +65,11 @@ const Home = () => {
         {searchstring.length > 0 && !errSearch && !isPendingSearch && (
           <DataList dataList={searchList} />
         )}
+
+        {searchstring.length > 0 &&
+          !errSearch &&
+          searchList.length === 0 &&
+          !isPendingSearch && <div>No movie with title : {searchstring}</div>}
 
         {searchstring.length > 0 &&
           !errSearch &&
